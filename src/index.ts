@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { program } from 'commander';
-import { resetGitAuthor, ResetOptions } from './resetGitAuthor'
+import { resetGitAuthor, ResetOptions } from './resetGitAuthor.js'
 
 program
   .version('1.0.0')
