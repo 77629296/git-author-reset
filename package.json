@@ -4,13 +4,31 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "bin": {
+    "git-author-reset": "./lib/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/77629296/git-author-reset.git"
+  },
+  "keywords": [
+    "git",
+    "author",
+    "reset"
+  ],
+  "author": {
+    "name": "leeson",
+    "email": "77629296@qq.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/77629296/git-author-reset/issues"
+  },
+  "homepage": "https://github.com/77629296/git-author-reset#readme",
   "scripts": {
     "test": "jest --config jest.config.ts",
     "build": "tsc -p tsconfig.build.json"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@types/jest": "^29.5.11",
     "@types/node": "^20.11.10",
