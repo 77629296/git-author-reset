@@ -31,6 +31,34 @@ describe('resetGitAuthor', () => {
     );
   });
 
+  it('should reset Git commits with new author and email use --force', () => {
+    // Mock the execSync function
+    const mockedExecSync = execSync as jest.Mock;
+
+    // Call the function with sample options
+    const params = {
+      oldEmail: 'old@example.com',
+      newEmail: 'new@example.com',
+      newAuthor: 'New Author',
+      force: true
+    }
+    resetGitAuthor(params);
+
+    // Assert that execSync was called with the correct command
+    expect(mockedExecSync).toHaveBeenCalledWith(
+      `git filter-branch -f --env-filter '
+      if [ "$GIT_COMMITTER_EMAIL" = "${params.oldEmail}" ]; then
+        export GIT_COMMITTER_NAME="${params.newAuthor}"
+        export GIT_COMMITTER_EMAIL="${params.newEmail}"
+      fi
+      if [ "$GIT_AUTHOR_EMAIL" = "${params.oldEmail}" ]; then
+        export GIT_AUTHOR_NAME="${params.newAuthor}"
+        export GIT_AUTHOR_EMAIL="${params.newEmail}"
+      fi
+    ' --tag-name-filter cat -- --branches --tags`,
+    );
+  });
+
   it('should handle invalid email format and set exitCode', () => {
     const params: ResetOptions = {
       oldEmail: 'invalid-email',

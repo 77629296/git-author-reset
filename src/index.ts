@@ -4,6 +4,7 @@ import { resetGitAuthor, ResetOptions } from './resetGitAuthor'
 
 program
   .version('1.0.0')
+  .option('-f, --force', 'Force overwrite existing backup')
   .description('A command-line tool to reset Git author information')
   .requiredOption('--oldEmail <oldEmail>', 'Old email address to be replaced')
   .requiredOption('--newEmail <newEmail>', 'New email address')

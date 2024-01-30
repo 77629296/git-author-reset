@@ -4,10 +4,11 @@ export interface ResetOptions {
   oldEmail: string;
   newEmail: string;
   newAuthor: string;
+  force?: boolean;
 }
 
 export function resetGitAuthor(options: ResetOptions): void {
-  const { oldEmail, newEmail, newAuthor } = options;
+  const { oldEmail, newEmail, newAuthor, force } = options;
 
   // Validate email format using a regular expression
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -18,8 +19,10 @@ export function resetGitAuthor(options: ResetOptions): void {
     return; // Return instead of calling process.exit
   }
 
+  const forceOption = force ? ' -f' : ''; // Add -f if forceFlag is true
+
   try {
-    execSync(`git filter-branch --env-filter '
+    execSync(`git filter-branch${forceOption} --env-filter '
       if [ "$GIT_COMMITTER_EMAIL" = "${oldEmail}" ]; then
         export GIT_COMMITTER_NAME="${newAuthor}"
         export GIT_COMMITTER_EMAIL="${newEmail}"
