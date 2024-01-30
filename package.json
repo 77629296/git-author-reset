@@ -20,6 +20,11 @@
     "name": "leeson",
     "email": "77629296@qq.com"
   },
+  "files": [
+    "lib/",
+    "LICENSE",
+    "README.md"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/77629296/git-author-reset/issues"
