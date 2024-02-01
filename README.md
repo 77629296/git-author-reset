@@ -1,10 +1,12 @@
 # git-author-reset
 
+English / [简体中文](./README-zh_CN.md)
+
 When using different Git accounts for code commits, inconsistency in email addresses is a common issue. To address this problem, I've created an npm package called `git-author-reset`, which allows you to easily modify the author information of Git commits. Below is a brief guide on how to use it:
 
 ## Installation
 
-Install `git-author-reset` via npm:
+Install `git-author-reset` via npm or pnpm:
 
 ```bash
 npm install -g git-author-reset
